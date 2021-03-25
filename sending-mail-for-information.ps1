@@ -29,13 +29,15 @@ $bcc 				= "admins@menten.com"
 $smtpserver 		= "sophos.menten.com"  
 
 <#  
-Contains name, first_name, email, change, salutation and department (for orientation purposes) formatted as a table seperated with "," for every userobject
+Contains name, first_name, email, change, salutation and department (for orientation purposes) 
+formatted as a table seperated with "," for every userobject
 Example: 
 Department,Salutation,Firstname,Lastname,Change,Email
 IT-Department,Misses,Ana,Admin,yes,admins@menten.com
 #>
 
-#  Define the location for the csv file used to import the needed information for each userobject and wether the userobject's password should be changed ("yes" if yes)
+#  Define the location for the csv file used to import the needed information for each userobject and 
+#  wether the userobject's password should be changed ("yes" if yes)
 $csvFile = $scriptPath+"\users.csv"
 
 #  Imports the information from the csv and executes for each userobject
@@ -62,12 +64,14 @@ Import-Csv $csvFile | ForEach-Object {
         #  Writes information in the log
         Logwrite "Use the following information: $salutation, $name"
         LogWrite "Send mail to: $email"
-        LogWrite "Send-MailMessage -To $email -from $originatorEmail -bcc $bcc -Subject $subject -Body $body -BodyAsHtml -encoding ([System.Text.Encoding]::UTF8)
+        LogWrite "Send-MailMessage -To $email -from $originatorEmail -bcc $bcc -Subject $subject -Body $body 
+		-BodyAsHtml -encoding ([System.Text.Encoding]::UTF8)
 		-Attachments $attachment -SmtpServer exchange.koeln.egetuerk.de"
         
         #  Sends the email to current userobject
-        if(!$debug){Send-MailMessage -To $email -from $originatorEmail -bcc $bcc -Subject $subject -Body $body -BodyAsHtml -encoding ([System.Text.Encoding]::UTF8)´
-		-Attachments $attachment -SmtpServer $smtpServer}
+        if(!$debug){
+			Send-MailMessage -To $email -from $originatorEmail -bcc $bcc -Subject $subjectÂ´
+			-Body $body -BodyAsHtml -encoding ([System.Text.Encoding]::UTF8)´ -Attachments $attachment -SmtpServer $smtpServer}
      }
    } catch {
      #  Writes information in the log
