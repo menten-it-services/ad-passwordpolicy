@@ -64,14 +64,13 @@ Import-Csv $csvFile | ForEach-Object {
         #  Writes information in the log
         Logwrite "Use the following information: $salutation, $name"
         LogWrite "Send mail to: $email"
-        LogWrite "Send-MailMessage -To $email -from $originatorEmail -bcc $bcc -Subject $subject -Body $body 
-		-BodyAsHtml -encoding ([System.Text.Encoding]::UTF8)
-		-Attachments $attachment -SmtpServer exchange.koeln.egetuerk.de"
+        LogWrite "Send-MailMessage -To $email -from $originatorEmail -bcc $bcc -Subject $subject -Body $body
+		-BodyAsHtml -encoding ([System.Text.Encoding]::UTF8) -Attachments $attachment -SmtpServer exchange.koeln.egetuerk.de"
         
         #  Sends the email to current userobject
         if(!$debug){
-			Send-MailMessage -To $email -from $originatorEmail -bcc $bcc -Subject $subjectÂ´
-			-Body $body -BodyAsHtml -encoding ([System.Text.Encoding]::UTF8)´ -Attachments $attachment -SmtpServer $smtpServer}
+			Send-MailMessage -To $email -from $originatorEmail -bcc $bcc -Subject $subject ´
+			-Body $body -BodyAsHtml -encoding ([System.Text.Encoding]::UTF8) -Attachments $attachment -SmtpServer $smtpServer}
      }
    } catch {
      #  Writes information in the log
