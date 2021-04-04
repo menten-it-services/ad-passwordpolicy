@@ -65,7 +65,7 @@ Import-Csv $csvFile | ForEach-Object {
         Logwrite "Use the following information: $salutation, $name"
         LogWrite "Send mail to: $email"
         LogWrite "Send-MailMessage -To $email -from $originatorEmail -bcc $bcc -Subject $subject -Body $body
-		-BodyAsHtml -encoding ([System.Text.Encoding]::UTF8) -Attachments $attachment -SmtpServer exchange.koeln.egetuerk.de"
+		-BodyAsHtml -encoding ([System.Text.Encoding]::UTF8) -Attachments $attachment -SmtpServer hostname-of-mailserver"
         
         #  Sends the email to current userobject
         if(!$debug){
